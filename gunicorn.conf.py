@@ -1,11 +1,11 @@
 from dotenv import load_dotenv
 
-_env_file = '/srv/env/waitress.env'
+_env_file = '/srv/env/graph.env'
 load_dotenv(_env_file)
 
 bind = '0.0.0.0:8848'
-chdir = '/srv/waitress'
-pidfile = '/srv/run/waitress.pid'
+chdir = '/srv/graph'
+pidfile = '/srv/run/graph.pid'
 
 workers = 4
 worker_class = 'uvicorn.workers.UvicornWorker'
@@ -19,5 +19,5 @@ graceful_timeout = 30  # 平滑重启等待时长(秒)
 capture_output = True
 # accesslog = '/srv/logs/access.log'
 accesslog = None  # 不记录访问日志，业务日志已覆盖
-errorlog = '/srv/logs/waitress.log'
+errorlog = '/srv/logs/graph.log'
 loglevel = 'info'

@@ -13,7 +13,7 @@ def setup_logger():
 
     logger.configure(patcher=inject_run_id)
 
-    fmt = '{time:YYYY-MM-DD HH:mm:ss} - {level} - [{extra[run_id]}] {name}:{function}:{line} - {message}'
+    fmt = '{time:YYYY-MM-DD HH:mm:ss} - {level:8} - [{extra[run_id]}] {name}:{function}:{line} - {message}'
 
     logger.add(
         sink=sys.stdout,

@@ -21,7 +21,7 @@ class _DBPoolHolder:
             maxconnections=20,  # 最大连接 含空闲和被借出的
             mincached=5,  # 初始化时预创建的连接数
             maxcached=10,  # 连接归还时，池中最多保留的空闲连接数 必须 >=mincached
-            blocking=False,  # 连接用尽时直接抛异常
+            blocking=True,  # 连接用尽时等候
             ping=1,  # 取连接前 ping
             cursorclass=DictCursor,
             autocommit=False,

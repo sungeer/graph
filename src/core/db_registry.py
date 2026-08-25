@@ -18,9 +18,9 @@ class _DBPoolHolder:
         """
         self._pool = PooledDB(
             creator=pymysql,
-            maxconnections=8,  # 最大连接 含空闲和被借出的
-            mincached=2,  # 初始化时预创建的连接数
-            maxcached=3,  # 连接归还时，池中最多保留的空闲连接数 必须 >=mincached
+            maxconnections=20,  # 最大连接 含空闲和被借出的
+            mincached=5,  # 初始化时预创建的连接数
+            maxcached=10,  # 连接归还时，池中最多保留的空闲连接数 必须 >=mincached
             blocking=False,  # 连接用尽时直接抛异常
             ping=1,  # 取连接前 ping
             cursorclass=DictCursor,

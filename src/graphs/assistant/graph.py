@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, START
 
-from src.agents.opus.state import AgentState
-from src.agents.opus import nodes
+from src.graphs.assistant.state import AgentState
+from src.graphs.assistant import nodes
 
 
 def route_by_intent(state: AgentState):

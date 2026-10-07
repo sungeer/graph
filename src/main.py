@@ -1,6 +1,6 @@
 from starlette.applications import Starlette
 
-from src.agents.graph_registry import graph_registry
+from src.graphs.graph_registry import graph_registry
 from src.core.lifespan import lifespan
 from src.routes import routes
 

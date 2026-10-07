@@ -1,4 +1,4 @@
-from src.agents.opus.graph import build_graph as build_opus_graph
+from src.graphs.assistant.graph import build_graph as build_assistant_graph
 
 
 class _GraphRegistry:
@@ -8,7 +8,7 @@ class _GraphRegistry:
 
     def init(self):
         self._store = {
-            'opus': build_opus_graph(),
+            'assistant': build_assistant_graph(),
         }
 
     def get(self, name):

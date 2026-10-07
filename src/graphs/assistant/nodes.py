@@ -5,8 +5,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, ToolMessage
 
 from src.core.llm_registry import llm_registry
-from src.agents.opus import toolset
-from src.agents.opus.state import AgentState, IntentResult
+from src.graphs.assistant import toolset
+from src.graphs.assistant.state import AgentState, IntentResult
 
 logger = logging.getLogger(__name__)
 

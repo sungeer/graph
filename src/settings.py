@@ -4,7 +4,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # 应用版本
-VERSION = '26.1007.1031'
+VERSION = '26.1008.0701'
 
 # 项目根目录
 BASE_DIR = Path(__file__).resolve().parent.parent

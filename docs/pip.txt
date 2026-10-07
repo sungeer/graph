@@ -11,7 +11,7 @@ pip uninstall asyncmy
 
 python -m pip install starlette uvicorn python-dotenv
 
-python -m pip install langchain-openai langgraph
+python -m pip install langchain-openai
 
 
 

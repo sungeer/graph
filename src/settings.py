@@ -32,3 +32,7 @@ if ENVIRONMENT not in _ENVIRONMENTS:
 # 日志
 # LOG_FILE = BASE_DIR / 'logs/graph.log'
 LOG_DIR = Path(os.getenv('LOG_DIR', default=str(BASE_DIR / 'logs')))
+
+LLM_MODEL = os.environ.get('MODEL', 'deepseek-v4-flash')
+LLM_URL = os.environ.get('API_BASE_URL')
+LLM_KEY = os.environ.get('API_KEY')

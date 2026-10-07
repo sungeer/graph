@@ -2,9 +2,11 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 
+from src import settings
+
 base_dir = Path(__file__).resolve().parent.parent
 
-log_file = base_dir / 'logs/graph.log'
+log_file = settings.BASE_DIR / 'logs/graph.log'
 
 
 def setup_logger():

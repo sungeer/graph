@@ -1,0 +1,38 @@
+import json
+import sys
+import time
+
+import httpx2 as httpx
+
+URL = 'http://127.0.0.1:8848/agent.chat'
+
+# 重定向/管道时 Windows 默认按本地编码（cp936）写 stdout，中文 delta 容易出问题
+sys.stdout.reconfigure(encoding='utf-8')
+
+
+def main():
+    started = time.perf_counter()
+    count = 0
+    parts = []
+
+    # trust_env=False：绕开系统代理（FlClash），本机请求直连
+    with httpx.Client(trust_env=False) as client:
+        with client.stream('POST', URL) as response:
+            print(f'POST {URL} -> {response.status_code} {response.headers.get("content-type")}')
+
+            for line in response.iter_lines():
+                if not line:
+                    continue
+
+                delta = json.loads(line)['delta']
+                parts.append(delta)
+                count += 1
+                print(f'  [{count:>3}] +{time.perf_counter() - started:5.2f}s  {delta}')
+
+    text = ''.join(parts)
+    print(f'\n{count} 块 / {len(text)} 字 / {time.perf_counter() - started:.2f}s')
+    print(f'全文：{text}')
+
+
+if __name__ == '__main__':
+    main()

@@ -1,8 +1,10 @@
+import logging
 from datetime import datetime
 
-from loguru import logger
 from pydantic import BaseModel, Field
 from langchain_core.tools import tool
+
+logger = logging.getLogger(__name__)
 
 
 class WeatherInput(BaseModel):

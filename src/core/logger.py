@@ -1,26 +1,35 @@
-import sys
+import logging
+from logging.handlers import TimedRotatingFileHandler
+from pathlib import Path
 
-from loguru import logger
+base_dir = Path(__file__).resolve().parent.parent
 
-from src.core.context import run_id_var
+log_file = base_dir / 'logs/graph.log'
 
 
 def setup_logger():
-    logger.remove()
+    root_logger = logging.getLogger()
 
-    def inject_run_id(record):
-        record['extra']['run_id'] = run_id_var.get()
+    logging.addLevelName(logging.DEBUG, 'DBG')
+    logging.addLevelName(logging.INFO, 'INF')
+    logging.addLevelName(logging.WARNING, 'WRN')
+    logging.addLevelName(logging.ERROR, 'ERR')
+    logging.addLevelName(logging.CRITICAL, 'CRT')
 
-    logger.configure(patcher=inject_run_id)
+    root_logger.setLevel(logging.INFO)
 
-    fmt = '{time:YYYY-MM-DD HH:mm:ss} - {level:8} - [{extra[run_id]}] {name}:{function}:{line} - {message}'
+    logging.getLogger('httpx2').setLevel(logging.WARNING)
 
-    logger.add(
-        sink=sys.stdout,
-        format=fmt,
-        diagnose=False,
-        backtrace=False,
-        colorize=False,
-        enqueue=True,
-        level='INFO',
+    fmt = '%(asctime)s | %(levelname)s | %(message)s (%(name)s:%(lineno)d)'
+
+    formatter = logging.Formatter(fmt=fmt)
+
+    file_handler = TimedRotatingFileHandler(
+        log_file,
+        when='midnight',
+        backupCount=7,
+        encoding='utf-8'
     )
+
+    file_handler.setFormatter(formatter)
+    root_logger.addHandler(file_handler)

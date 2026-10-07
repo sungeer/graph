@@ -9,20 +9,16 @@ pip install -r requirements.txt
 pip uninstall asyncmy
 
 
-python -m pip install starlette uvicorn loguru httpx cryptography
+python -m pip install starlette uvicorn python-dotenv
 
-python -m pip install DBUtils PyMySQL PyJWT
-
-python -m pip install python-dotenv
-
-python -m pip install langchain-openai
-
-python -m pip install langgraph
+python -m pip install langchain-openai langgraph
 
 
 
+uvicorn app:app --host 0.0.0.0 --port 8848
 
-uvicorn app:app --host 0.0.0.0 --port 8000
+uvicorn app:app --host 0.0.0.0 --port 8848 --env-file /home/user/waitress-testing.env
 
 
-uvicorn app:app --host 0.0.0.0 --port 8000 --env-file /home/user/waitress-testing.env
+uvicorn app:app --port 8848
+

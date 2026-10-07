@@ -1,7 +1,7 @@
-import httpx
+import httpx2 as httpx
 from langchain_openai import ChatOpenAI
 
-from src.config import settings
+from src import settings
 
 
 class _LLMRegistry:
@@ -19,7 +19,9 @@ class _LLMRegistry:
                 base_url=settings.llm_url,
                 api_key=settings.llm_key,  # noqa
                 extra_body={
-                    'thinking': {'type': 'disabled'}
+                    'thinking': {
+                        'type': 'disabled'
+                    }
                 },
                 temperature=0.0,
                 timeout=300,
@@ -32,7 +34,9 @@ class _LLMRegistry:
                 base_url=settings.llm_url,
                 api_key=settings.llm_key,  # noqa
                 extra_body={
-                    'thinking': {'type': 'disabled'}
+                    'thinking': {
+                        'type': 'disabled'
+                    }
                 },
                 temperature=0.0,
                 timeout=300,
@@ -45,7 +49,9 @@ class _LLMRegistry:
                 base_url=settings.llm_url,
                 api_key=settings.llm_key,  # noqa
                 extra_body={
-                    'thinking': {'type': 'enabled'}
+                    'thinking': {
+                        'type': 'enabled'
+                    }
                 },
                 temperature=0.0,
                 timeout=300,

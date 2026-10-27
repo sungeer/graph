@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  agent-graph:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sungeer-graph
+    restart: unless-stopped
+    ports:
+      - "8848:8848"
+    environment:
+      - ENVIRONMENT=development
+      - LOG_DIR=/app/logs
+      - API_BASE_URL=https://api.deepseek.com
+      - API_KEY=${API_KEY:-sk-no-key}
+      - MODEL=${MODEL:-deepseek-v4-flash}
+    volumes:
+      - ./logs:/app/logs

@@ -1,0 +1,6 @@
+starlette>=0.37.0
+uvicorn>=0.30.0
+python-dotenv>=1.0.0
+langchain-openai>=0.1.0
+pytest>=8.0.0
+httpx>=0.27.0

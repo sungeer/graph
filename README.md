@@ -2,25 +2,37 @@
 
 *An agent built with LangGraph.*
 
-## Installation
+[ [中文文档 (Chinese)](README.md) | [English Documentation](README_EN.md) ]
 
-clone:
-```
+## 快速开始
+
+### 安装
+
+```bash
 $ git clone git@github.com:sungeer/graph.git
 $ cd graph
 ```
-create & activate virtual env then install dependency:
 
-with venv/virtualenv + pip:
-```
-$ python -m venv env  # use `python3 ...` for Python3 on Linux & macOS
-$ source env/bin/activate  # use `env\Scripts\activate` on Windows
+创建并激活虚拟环境，安装依赖：
+
+```bash
+$ python -m venv .venv           # Windows: .venv\Scripts\activate
+$ source .venv/bin/activate
 $ pip install -r requirements.txt
+$ cp .env.example .env
 ```
-then run:
-```
-$ uvicorn graph:app --port 8848
+
+### 启动服务
+
+```bash
+$ uvicorn app:app --port 8848
 * Running on http://127.0.0.1:8848/
+```
+
+### Docker 容器化启动
+
+```bash
+$ docker compose up -d
 ```
 
 ## License

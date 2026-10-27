@@ -17,9 +17,13 @@ $ python -m venv env  # use `python3 ...` for Python3 on Linux & macOS
 $ source env/bin/activate  # use `env\Scripts\activate` on Windows
 $ pip install -r requirements.txt
 ```
+configure environment:
+```
+$ cp .env.example .env  # on Windows: copy .env.example .env
+```
 then run:
 ```
-$ uvicorn graph:app --port 8848
+$ uvicorn app:app --port 8848
 * Running on http://127.0.0.1:8848/
 ```
 
